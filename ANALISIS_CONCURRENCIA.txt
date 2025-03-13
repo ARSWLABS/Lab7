@@ -1,0 +1,31 @@
+### Análisis de Concurrencia
+
+#### 1. Condiciones de Carrera
+
+En el componente **BlueprintsRESTAPI**, se identificaron las siguientes condiciones de carrera:
+
+- **Agregar un Nuevo Plano**: Cuando múltiples hilos intentan agregar un nuevo plano simultáneamente, existe el riesgo de que ambos hilos verifiquen si el plano ya existe antes de que uno de ellos lo agregue. Esto puede resultar en la inserción de planos duplicados.
+
+- **Consultar Planos por Autor**: Si un hilo está consultando los planos mientras otro hilo está modificando la colección (por ejemplo, agregando o eliminando planos), el hilo que consulta puede obtener un estado inconsistente de la colección.
+
+#### 2. Regiones Críticas
+
+Las regiones críticas en el código son aquellas secciones donde se accede a recursos compartidos que pueden ser modificados por múltiples hilos. En este caso, las regiones críticas son:
+
+- **Método `saveBlueprint`**: Este método accede y modifica la colección de planos. La operación de consulta y posterior inserción debe ser atómica para evitar condiciones de carrera.
+
+- **Método `getBlueprintsByAuthor`**: Este método también accede a la colección de planos y debe garantizar que no se produzcan modificaciones mientras se está leyendo.
+
+#### 3. Soluciones Propuestas
+
+Para abordar las condiciones de carrera y asegurar la integridad de los datos sin degradar significativamente el rendimiento de la API, se implementaron las siguientes soluciones:
+
+- **Uso de Colecciones Concurrentes**: Se cambió la colección utilizada para almacenar los planos de `HashMap` a `ConcurrentHashMap`. Esta colección es segura para hilos y permite operaciones concurrentes sin necesidad de sincronización explícita.
+
+- **Métodos Atómicos**: En el método `saveBlueprint`, se utilizó el método `putIfAbsent()` de `ConcurrentHashMap`, que permite agregar un plano solo si no existe, todo en una sola operación atómica. Esto evita la necesidad de verificar la existencia del plano antes de agregarlo, eliminando así la condición de carrera.
+
+- **Minimización de Bloqueos**: Al utilizar colecciones concurrentes y métodos atómicos, se minimiza la necesidad de bloqueos explícitos, lo que mejora el rendimiento general de la API en un entorno concurrente.
+
+### Conclusión
+
+El análisis de concurrencia realizado en el componente **BlueprintsRESTAPI** ha permitido identificar y mitigar las condiciones de carrera, asegurando que la API funcione de manera eficiente y segura en un entorno concurrente. Las soluciones implementadas garantizan la integridad de los datos y mejoran el rendimiento general de la aplicación.
