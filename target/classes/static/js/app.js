@@ -74,8 +74,20 @@ var Module = (function () {
     }
 
     function createNewBlueprint() {
-        alert("Create New Blueprint functionality to be implemented.");
-        // Aquí puedes agregar la lógica para crear un nuevo blueprint
+        // Borrar el canvas actual
+        const canvas = document.getElementById("blueprint-canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Solicitar el nombre del nuevo blueprint
+        const blueprintName = prompt("Enter the name of the new blueprint:");
+        if (blueprintName) {
+            currentBlueprintName = blueprintName;
+            $("#blueprint-name").text(blueprintName);
+            alert(`New blueprint "${blueprintName}" created. You can start drawing.`);
+        } else {
+            alert("Blueprint name is required.");
+        }
     }
 
     function saveOrUpdateBlueprint() {
