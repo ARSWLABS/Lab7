@@ -73,9 +73,27 @@ var Module = (function () {
         ctx.stroke();
     }
 
+    function createNewBlueprint() {
+        alert("Create New Blueprint functionality to be implemented.");
+        // Aquí puedes agregar la lógica para crear un nuevo blueprint
+    }
+
+    function saveOrUpdateBlueprint() {
+        alert("Save/Update Blueprint functionality to be implemented.");
+        // Aquí puedes agregar la lógica para guardar o actualizar un blueprint
+    }
+
+    function deleteBlueprint() {
+        alert("Delete Blueprint functionality to be implemented.");
+        // Aquí puedes agregar la lógica para eliminar un blueprint
+    }
+
     return {
         updateAuthor: updateAuthor,
         openBlueprint: openBlueprint,
-        toggleAPI: toggleAPI
+        toggleAPI: toggleAPI,
+        createNewBlueprint: createNewBlueprint,
+        saveOrUpdateBlueprint: saveOrUpdateBlueprint,
+        deleteBlueprint: deleteBlueprint
     };
 })();
