@@ -48,4 +48,30 @@ public class BlueprintsServices {
     Set<Blueprint> blueprints = bpp.getAllBlueprints();
     return blueprints.stream().map(filter::filter).collect(Collectors.toSet());
   }
+
+  /**
+   * Trae todos los planos almacenados
+   * @param author
+   * @param bpname
+   * @throws BlueprintNotFoundException
+   */
+  public void deleteBlueprint(String author, String bpname)
+    throws BlueprintNotFoundException {
+    bpp.deleteBlueprint(author, bpname);
+  }
+
+  /**
+   * Actualiza un plano
+   * @param author
+   * @param bpname
+   * @param updatedBlueprint
+   * @throws BlueprintNotFoundException
+   */
+  public void updateBlueprint(
+    String author,
+    String bpname,
+    Blueprint updatedBlueprint
+  ) throws BlueprintNotFoundException {
+    bpp.updateBlueprint(author, bpname, updatedBlueprint);
+  }
 }

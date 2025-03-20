@@ -35,7 +35,16 @@
         </div>
 
         <div class="canvas-wrapper">
+            <!-- Botón Create New Blueprint -->
+            <button class="btn btn-primary mb-3" onclick="Module.createNewBlueprint()">Create New Blueprint</button>
+            
             <canvas id="blueprint-canvas" width="500" height="400"></canvas>
+            
+            <!-- Botones Save/Update y Delete -->
+            <div class="canvas-buttons mt-3">
+                <button class="btn btn-success" onclick="Module.saveOrUpdateBlueprint()">Save/Update</button>
+                <button class="btn btn-danger" onclick="Module.deleteBlueprint()">Delete</button>
+            </div>
         </div>
     </div>
 

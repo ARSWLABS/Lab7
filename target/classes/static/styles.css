@@ -50,6 +50,7 @@ th, td {
 .canvas-wrapper {
     flex-grow: 1; /* Hace que el canvas use el espacio restante */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -66,7 +67,7 @@ th, td {
     background-color: white;
 }
 
-/* Botón */
+/* Botones */
 button {
     background-color: #000000;
     color: white;
@@ -74,8 +75,16 @@ button {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+.canvas-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
 }

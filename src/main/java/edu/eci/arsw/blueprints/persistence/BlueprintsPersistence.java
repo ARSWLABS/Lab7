@@ -14,4 +14,12 @@ public interface BlueprintsPersistence {
 
   // Este metodo es para compelementar punto3 de la parte 1
   Set<Blueprint> getAllBlueprints() throws BlueprintNotFoundException;
+
+  void deleteBlueprint(String author, String bpname);
+
+  void updateBlueprint(
+    String author,
+    String bpname,
+    Blueprint updatedBlueprint
+  );
 }
