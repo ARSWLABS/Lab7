@@ -54,3 +54,8 @@ Este proyecto es una aplicación web que permite a los usuarios visualizar y ges
 3. Alternar entre la API simulada y la real con el botón **"Toggle API"**.
 
 ![](img/app.png)
+
+## Cambios que se hicieron
+
+en este lab lo unico que tocaba hacer era agregar botones y unas funcionalidades funcionales con la api
+![](img/app2.png)
